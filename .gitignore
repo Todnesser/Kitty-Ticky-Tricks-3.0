@@ -1,0 +1,53 @@
+# Compiled Lua sources
+luac.out
+
+# luarocks build files
+*.src.rock
+*.zip
+*.tar.gz
+
+# Object files
+*.o
+*.os
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+*.def
+*.exp
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Avoid committing full WoW SavedVariables if symlinking
+*.lua.bak
+WeakAuras.lua
+
+# OS & Editor temp files
+.DS_Store
+.vscode/
+.idea/
+
+# Local build artifacts
+*.tmp
+
