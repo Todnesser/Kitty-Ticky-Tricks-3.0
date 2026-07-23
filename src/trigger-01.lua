@@ -32,6 +32,7 @@ function()
         [catFormSpellID]="Powershift"
     }
     
+    
     -- Rotation preferences (FeralDruidRotation / setupRotation)
     local useBite = aura_env.config.useBite          
     local biteOverRip = aura_env.config.biteOverRip
@@ -141,7 +142,7 @@ function()
     
     if UnitExists("target") and not UnitIsDead("target") then
         for i = 1, 40 do
-            local name, _, _, _, duration, expirationTime, _, _, _, spellId = UnitDebuff("target", i)
+            local name, _, _, _, duration, expirationTime, casterId, _, _, spellId = UnitDebuff("target", i)
             if not name then break end
             
             if spellId == mangleSpellID or spellId == 33876 or spellId == 33878 or spellId == 35290 or name == "Mangle (Cat)" or name == "Mangle (Bear)" or name == "Mangle" then
@@ -149,12 +150,12 @@ function()
                 if expirationTime and expirationTime > 0 then
                     mangleRemaining = expirationTime - GetTime()
                 end
-            elseif spellId == ripSpellID or name == "Rip" then
+            elseif casterId == "player" and (spellId == ripSpellID or name == "Rip") then
                 hasRip = true
                 if expirationTime and expirationTime > 0 then
                     ripRemaining = expirationTime - GetTime()
                 end
-            elseif spellId == rakeSpellID or name == "Rake" then
+            elseif casterId == "player" and (spellId == rakeSpellID or name == "Rake") then
                 hasRake = true
             elseif spellId == ffSpellID or name == "Faerie Fire (Feral)" or name == "Faerie Fire" then
                 hasFF = true
@@ -337,3 +338,4 @@ function()
     WA_Feral_Helper_Wait_Text = ""
     return false
 end
+
