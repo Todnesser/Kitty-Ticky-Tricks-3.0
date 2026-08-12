@@ -157,8 +157,10 @@ function()
                 end
             elseif casterId == "player" and (spellId == rakeSpellID or name == "Rake") then
                 hasRake = true
-            elseif spellId == ffSpellID or name == "Faerie Fire (Feral)" or name == "Faerie Fire" then
-                hasFF = true
+            elseif spellId == ffSpellID or name == "Faerie Fire (Feral)" or name == "Faerie Fire" then                
+                if expirationTime and (expirationTime - GetTime()) > aura_env.config.maintainFaerieFireBefore then
+                    hasFF = true
+                end
             end
         end
     end
