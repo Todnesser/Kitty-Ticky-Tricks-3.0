@@ -1,3 +1,4 @@
+-- Event: ENERGYTICKLE
 -- Do not remove this comment, it is part of this aura: Energy Ticklizer
 function(a, e, t, powerType)
     if not WeakAuraEnergyTicklerFrame then
