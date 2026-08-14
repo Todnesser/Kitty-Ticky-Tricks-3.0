@@ -166,17 +166,12 @@ function()
     end
     
     -- 6. Tick Timing Predictions
-    if not WA_Feral_LastEnergy then WA_Feral_LastEnergy = energy end
-    if not WA_Feral_LastTickTime then WA_Feral_LastTickTime = GetTime() end
-    
     local currentTime = GetTime()
-    if energy > WA_Feral_LastEnergy then
-        WA_Feral_LastTickTime = currentTime
-    end
-    WA_Feral_LastEnergy = energy
     
-    local timeToNextTick = 2.0 - (currentTime - WA_Feral_LastTickTime)
-    if timeToNextTick < 0 or timeToNextTick > 2.0 then timeToNextTick = 2.0 end
+    local timeToNextTick = 2.02 - (currentTime - aura_env.lastTick)
+    if timeToNextTick < 0 or timeToNextTick > 2.02 then timeToNextTick = 2.02 end
+    
+--    print(timeToNextTick)
     
     -- 7. Logic Triggers Mirroring Go Properties
     local targetHealthPercent = (UnitHealth("target") / UnitHealthMax("target")) * 100
