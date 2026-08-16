@@ -167,11 +167,21 @@ function()
     
     -- 6. Tick Timing Predictions
     local currentTime = GetTime()
+    local lastTick = aura_env.lastTick
     
-    local timeToNextTick = 2.02 - (currentTime - aura_env.lastTick)
+    local timeToNextTick = 2.02
+    
+    
+    --    print(lastTick)
+    if lastTick then
+        timeToNextTick = timeToNextTick - (currentTime - lastTick)
+    end
+    
+    --print(timeToNextTick)
+    
     if timeToNextTick < 0 or timeToNextTick > 2.02 then timeToNextTick = 2.02 end
     
---    print(timeToNextTick)
+    --    print(timeToNextTick)
     
     -- 7. Logic Triggers Mirroring Go Properties
     local targetHealthPercent = (UnitHealth("target") / UnitHealthMax("target")) * 100
